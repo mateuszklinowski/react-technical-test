@@ -8,8 +8,8 @@ function App() {
 
   return (
     <div>
-        <button type="button" onClick={toggleMenu}>Open menu</button>
-        {isOpen && <MenuComponent/>}
+        <button type="button" onClick={toggleMenu} aria-expanded={isOpen}>Open menu</button>
+        {isOpen && <MenuComponent toggleMenu={toggleMenu}/>}
     </div>
   );
 }
