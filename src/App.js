@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { MenuComponent } from "./menu/menu.component";
+import styled from 'styled-components'
+import {ButtonComponent} from "./shared/buttom.component";
 
-//CSS
-import '@fortawesome/fontawesome-free/css/all.css';
+const StyledApp = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+`;
 
 function App() {
   const [isOpen, setMenu] = useState(true);
@@ -10,10 +16,12 @@ function App() {
   const toggleMenu = () => setMenu(state => !state);
 
   return (
-    <div>
-        <button type="button" onClick={toggleMenu} aria-expanded={isOpen}>Open menu</button>
+    <StyledApp>
+        <ButtonComponent onClick={toggleMenu} aria-expanded={isOpen} aria-label="open menu">
+            Open menu
+        </ButtonComponent>
         {isOpen && <MenuComponent toggleMenu={toggleMenu}/>}
-    </div>
+    </StyledApp>
   );
 }
 
