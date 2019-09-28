@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { MenuComponent } from "./menu/menu.component";
 
+//CSS
+import '@fortawesome/fontawesome-free/css/all.css';
+
 function App() {
   const [isOpen, setMenu] = useState(true);
 
