@@ -8,7 +8,7 @@ export const navigationButtons = [
         icon: "plane"
     },
     {
-        text: "My Bookings",
+        text: "My Payments",
         icon: "credit-card"
     },
     {
