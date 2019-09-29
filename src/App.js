@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { MenuContainer } from "./menu/menu.container";
+import styled from 'styled-components'
+import { Transition } from 'react-transition-group';
+import {ButtonComponent} from "./shared/buttom.component";
+import {ANIMATION_DURATION} from "./constants/media";
+
+const StyledApp = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+`;
 
 function App() {
+  const [isOpen, setMenu] = useState(true);
+
+  const toggleMenu = () => setMenu(state => !state);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+        <ButtonComponent onClick={toggleMenu} aria-expanded={isOpen} aria-label="open menu">
+            Open menu
+        </ButtonComponent>
+        <Transition in={isOpen} timeout={ANIMATION_DURATION}>
+            {transitionState => <MenuContainer toggleMenu={toggleMenu} transitionState={transitionState}/>}
+        </Transition>
+    </StyledApp>
   );
 }
 

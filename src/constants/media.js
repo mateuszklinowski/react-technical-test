@@ -1,0 +1,2 @@
+export const MOBILE_BREAKPOINT = 850;
+export const ANIMATION_DURATION = 300;
