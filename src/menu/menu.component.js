@@ -35,10 +35,6 @@ export const MenuComponent = (props) => {
     const isMobile = useIsMobile();
     const {toggleMenu, mobileNavButtons, desktopNavButtons, transitionState} = props;
 
-    if(transitionState === 'exited'){
-        return null
-    }
-
     return (
         <StyledNav transitionState={transitionState} isMobile={isMobile}>
             <MenuHeader toggleMenu={toggleMenu}/>

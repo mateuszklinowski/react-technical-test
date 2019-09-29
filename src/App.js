@@ -23,9 +23,7 @@ function App() {
             Open menu
         </ButtonComponent>
         <Transition in={isOpen} timeout={ANIMATION_DURATION}>
-            {transitionState => {
-                return <MenuContainer toggleMenu={toggleMenu} transitionState={transitionState}/>
-            }}
+            {transitionState => <MenuContainer toggleMenu={toggleMenu} transitionState={transitionState}/>}
         </Transition>
     </StyledApp>
   );
