@@ -8,6 +8,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: #64ee5f;
     color: white;
+    overflow-x: hidden;
 }
 
 #root{

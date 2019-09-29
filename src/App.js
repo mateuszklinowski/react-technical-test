@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { MenuContainer } from "./menu/menu.container";
 import styled from 'styled-components'
+import { Transition } from 'react-transition-group';
 import {ButtonComponent} from "./shared/buttom.component";
+import {ANIMATION_DURATION} from "./constants/media";
 
 const StyledApp = styled.div`
     display: flex;
@@ -20,7 +22,11 @@ function App() {
         <ButtonComponent onClick={toggleMenu} aria-expanded={isOpen} aria-label="open menu">
             Open menu
         </ButtonComponent>
-        {isOpen && <MenuContainer toggleMenu={toggleMenu}/>}
+        <Transition in={isOpen} timeout={ANIMATION_DURATION}>
+            {transitionState => {
+                return <MenuContainer toggleMenu={toggleMenu} transitionState={transitionState}/>
+            }}
+        </Transition>
     </StyledApp>
   );
 }
