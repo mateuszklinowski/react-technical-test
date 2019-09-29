@@ -2,27 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import {useIsMobile} from "../../utils/useIsMobile.hook";
 import {currencyFormatter} from "../../utils/currencyFormatter/currencyFormatter";
+import {SeparatorComponent} from "../separator.component";
+import {AvatarComponent} from "./avatar.component";
 
 const StyledUser = styled.div`
 display: flex;
-flex-direction: column;
-align-items: center;
+flex-direction:  ${props => props.isMobile ? 'column' : 'row'};
+align-items: ${props => props.isMobile ? 'center' : 'inherit'};
+margin-bottom: 1rem;
+flex-wrap: wrap;
 `;
 
-const Avatar = styled.div`
-border-radius: 50%;
-background-color: white;
-width: 46px;
-height: 46px;
+const StyledSection = styled.section`
 display: flex;
 flex-direction: column;
-justify-content:center;
-align-items: center;
-img{
-    width: auto;
-    height: 32px;
-}
-`;
+padding-left: ${props => props.isMobile ? '0' : '1rem'};
+align-items: ${props => props.isMobile ? 'center' : 'inherit'};
+`
 
 const Info = styled.span`
 font-weight: ${props => props.isMobile ? "normal" : "700"};
@@ -32,14 +28,28 @@ export const UserComponent = (props) => {
     const isMobile = useIsMobile();
     const {user = {}} = props;
 
-    return (
-        <StyledUser>
-            <Avatar>
-                <img src={user.avatar} alt={`${user.name} avatar`}/>
-            </Avatar>
-            <Info isMobile={isMobile}>{`${user.name} ${user.surname}`}</Info>
+    const getBalanceInfo= (isMobile) => isMobile ? (
+        <>
             <Info isMobile={isMobile}>Available balance</Info>
             <Info isMobile={isMobile}>{currencyFormatter(user.balance)}</Info>
-        </StyledUser>
-    )
+        </>
+    ) : (
+        <div>
+            <Info isMobile={isMobile}>{currencyFormatter(user.balance)} </Info>
+            <Info isMobile={isMobile}>Available balance</Info>
+        </div>
+    );
+
+    return (
+        <>
+            <StyledUser isMobile={isMobile}>
+                <AvatarComponent avatar={user.avatar} name={user.name}/>
+                <StyledSection isMobile={isMobile}>
+                    <Info isMobile={isMobile}>{`${user.name} ${user.surname}`}</Info>
+                    {getBalanceInfo(isMobile)}
+                </StyledSection>
+            </StyledUser>
+            <SeparatorComponent color={isMobile ? 'transparent' : undefined}/>
+        </>
+)
 };

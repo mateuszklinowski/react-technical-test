@@ -1,6 +1,7 @@
 import React from 'react';
 import {UserComponent} from "./user.component";
 import avatar from '../../assets/avatar.png';
+import {fakeConnect} from "../../utils/fakeConnect";
 
 // FAKE container component
 const user = {
@@ -8,10 +9,6 @@ const user = {
     surname: 'Biel',
     balance:  1500.00,
     avatar,
-};
-
-const fakeConnect = (connectProps) => (Component) => {
-    return (props) => <Component {...connectProps} {...props} />
 };
 
 export const UserContainer = fakeConnect({user})(UserComponent);

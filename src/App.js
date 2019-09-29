@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MenuComponent } from "./menu/menu.component";
+import { MenuContainer } from "./menu/menu.container";
 import styled from 'styled-components'
 import {ButtonComponent} from "./shared/buttom.component";
 
@@ -20,7 +20,7 @@ function App() {
         <ButtonComponent onClick={toggleMenu} aria-expanded={isOpen} aria-label="open menu">
             Open menu
         </ButtonComponent>
-        {isOpen && <MenuComponent toggleMenu={toggleMenu}/>}
+        {isOpen && <MenuContainer toggleMenu={toggleMenu}/>}
     </StyledApp>
   );
 }

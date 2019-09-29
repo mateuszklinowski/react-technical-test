@@ -3,6 +3,7 @@ import {SeparatorComponent} from "../shared/separator.component";
 import awaymoLogo from '../assets/awaymoFullWhite.svg';
 import styled from 'styled-components';
 import {ButtonComponent} from "../shared/buttom.component";
+import {useIsMobile} from "../utils/useIsMobile.hook";
 
 const StyledImage = styled.img`
     display: block;
@@ -22,6 +23,7 @@ position:relative;
 `;
 
 export const MenuHeader = (props) => {
+    const isMobile = useIsMobile();
     const { toggleMenu } = props;
 
     return (
@@ -32,7 +34,7 @@ export const MenuHeader = (props) => {
                     <ButtonComponent onClick={toggleMenu} icon='times'/>
                 </Absolute>
             </RelativeDiv>
-            <SeparatorComponent/>
+            <SeparatorComponent color={isMobile ? undefined : "white"} bold={!isMobile}/>
         </header>
     )
 };

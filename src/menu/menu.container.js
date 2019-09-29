@@ -1,4 +1,9 @@
-export const navigationButtons = [
+import React from 'react';
+import {MenuComponent} from "./menu.component";
+import {fakeConnect} from "../utils/fakeConnect";
+
+// FAKE container component
+const mobileNavButtons = [
     {
         text: "Profile",
         icon: "user-circle",
@@ -32,3 +37,17 @@ export const navigationButtons = [
         icon: "info-circle"
     }
 ];
+
+const desktopNavButtons = [
+    {
+        text: 'Home',
+    },
+    {
+        text: 'Flights',
+    },
+    {
+        text: 'Resume Application'
+    }
+];
+
+export const MenuContainer = fakeConnect({mobileNavButtons, desktopNavButtons})(MenuComponent);
