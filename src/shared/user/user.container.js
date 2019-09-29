@@ -1,6 +1,6 @@
 import React from 'react';
 import {UserComponent} from "./user.component";
-import avatar from './../assets/avatar.png';
+import avatar from '../../assets/avatar.png';
 
 // FAKE container component
 const user = {
